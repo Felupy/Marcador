@@ -296,8 +296,12 @@ namespace Marcador
             this.ControlBox = false;
             this.Controls.Add(this.ExpulsionDataView);
             this.Controls.Add(this.ScoreBoardPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Marcador";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "ScoreBoard";
             this.TransparencyKey = System.Drawing.Color.LimeGreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
