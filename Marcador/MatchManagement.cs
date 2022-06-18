@@ -209,19 +209,27 @@ namespace Marcador
 
         void tClock_Tick(object sender, EventArgs e)
         {
-            marcador.CronoLabel.Text = swClock.Elapsed.Minutes.ToString("00") + ":" + swClock.Elapsed.Seconds.ToString("00");
-            this.CronoLabel.Text = swClock.Elapsed.Minutes.ToString("00") + ":" + swClock.Elapsed.Seconds.ToString("00");
+            string time_str = swClock.Elapsed.Minutes.ToString("00") + ":" + swClock.Elapsed.Seconds.ToString("00");
+
+            if (gameRunning)
+            {
+                 marcador.CronoLabel.Text = time_str;
+                this.CronoLabel.Text = time_str;
+            }
+
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
         {
             swClock.Stop();
+            tClock.Stop();
             gameRunning = false;
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
             swClock.Reset();
+            tClock.Stop();
             gameRunning = false;
         }
 
