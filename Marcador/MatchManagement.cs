@@ -58,11 +58,14 @@ namespace Marcador
             //Create Directories
             Directory.CreateDirectory(ExportsDir);
 
-            //Expulsion timer
+            //Timers setup
             tExpulsion = new System.Windows.Forms.Timer();
             tExpulsion.Tick += t_TickExpulsion;
             tExpulsion.Interval = 1000; //1s
             tExpulsion.Start();
+            tClock.Interval = 1000; //1s
+            tClock.Tick += tClock_Tick;
+
 
             //Setup DB
 
@@ -176,8 +179,9 @@ namespace Marcador
 
         void t_Tick(object sender, EventArgs e)
         {
-            marcador.TimeOutLabel.Text = swTimeout.Elapsed.Minutes.ToString("00") + ":" + swTimeout.Elapsed.Seconds.ToString("00") + " (" + Timeout.ToString() + ")";
-            this.TimeoutLabel.Text = swTimeout.Elapsed.Minutes.ToString("00") + ":" + swTimeout.Elapsed.Seconds.ToString("00") + " (" + Timeout.ToString() + ")";
+            string timeout_str = swTimeout.Elapsed.ToString("mm\\:ss");
+            marcador.TimeOutLabel.Text = timeout_str;
+            this.TimeoutLabel.Text = timeout_str;
 
             if (swTimeout.Elapsed.Minutes >= Timeout)
             {
@@ -200,16 +204,14 @@ namespace Marcador
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            tClock.Interval = 1000; //1s
-            tClock.Tick += tClock_Tick;
-            tClock.Start();
-            swClock.Start();
             gameRunning = true;
+            swClock.Start();
+            tClock.Start();
         }
 
         void tClock_Tick(object sender, EventArgs e)
         {
-            string time_str = swClock.Elapsed.Minutes.ToString("00") + ":" + swClock.Elapsed.Seconds.ToString("00");
+            string time_str = swClock.Elapsed.ToString("mm\\:ss");
 
             if (gameRunning)
             {
@@ -236,7 +238,7 @@ namespace Marcador
         private void ResetButton_Click(object sender, EventArgs e)
         {
             swClock.Restart();
-            gameRunning = true;
+            //This does not affect the current state of the game.
         }
 
         #endregion
@@ -295,16 +297,19 @@ namespace Marcador
                 return;
             try
             {
-                foreach (var elem in marcador.expulsionTimers)
+                foreach (Stopwatch elemSw in marcador.expulsionTimers)
                 {
-                    int min = ((Stopwatch)elem).Elapsed.Minutes;
-                    string time = min.ToString("00") + ":" + ((Stopwatch)elem).Elapsed.Seconds.ToString("00");
-                    
+                    int minutes = elemSw.Elapsed.Minutes;
+                    string time = elemSw.Elapsed.ToString("mm\\:ss");
+
+                    //Update display on streaming window
                     DataGridViewRow row = marcador.ExpulsionDataView.Rows[indx];
                     row.Cells[1].Value = time; //update time left
+
+                    //Update management window
                     int minTotal = Convert.ToInt32(row.Cells[2].Value.ToString().Split(':')[0]);
                     DataGridViewRow rowMangement = this.ExpulsionDataGridView.Rows[indx];
-                    if (min >= minTotal) //remove row
+                    if (minutes >= minTotal) //remove row
                     {
                         //marcador.ExpulsionDataView.Rows.Remove(row);
                         this.ExpulsionDataGridView.Rows.Remove(rowMangement);
