@@ -22,3 +22,7 @@ ToDo:
 
   - A lot of testing to be done.
   - Also, a code rework must be done at somepoing.
+
+Requirements:
+  - Windows OS
+  - .NET Framework 4.5
