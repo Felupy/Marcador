@@ -430,8 +430,8 @@ namespace Marcador
         {
             SaveFileDialog sf = new SaveFileDialog();
             sf.InitialDirectory = Directory.GetCurrentDirectory() + ExportsDir;
-            sf.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            sf.OverwritePrompt = false;
+            sf.Filter = "CSV files (*.csv)|*.xlsx|All files (*.*)|*.*";
+            sf.OverwritePrompt = true;
 
             string filepath;
             if (sf.ShowDialog() != DialogResult.OK)
@@ -440,18 +440,10 @@ namespace Marcador
             }
             filepath = sf.FileName;
 
-            var excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook workbook = excel.Workbooks.Add(true);
+            if (File.Exists(filepath))
+                File.Delete(filepath);
 
-            //if (File.Exists(filepath))
-            //    File.Delete(filepath);
-
-            AddExcelSheet(dtMatchs, workbook);
-
-
-            workbook.SaveAs(filepath);
-            CloseExcel(excel, workbook);
-
+            dtMatchs.WriteXml(filepath);
 
             MessageBox.Show("Games exported succesfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dataExported = true;
@@ -466,17 +458,15 @@ namespace Marcador
             }
 
             string filename = of.FileName;
-            var excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook workbook = excel.Workbooks.Open(filename);
+
             try
             {
-                ReadExcelSheet("Matches", workbook, dtMatchs);
-                CloseExcel(excel, workbook);
+                dtMatchs.Clear();
+                dtMatchs.ReadXml(filename);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error importing the data. Make sure the data has the correct format.\nDetails: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CloseExcel(excel, workbook);
                 return;
             }
 
@@ -596,10 +586,12 @@ namespace Marcador
 
         private void ExportTeamsButton_Click(object sender, EventArgs e)
         {
+
+
             SaveFileDialog sf = new SaveFileDialog();
             sf.InitialDirectory = Directory.GetCurrentDirectory() + ExportsDir;
-            sf.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            sf.OverwritePrompt = false;
+            sf.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            sf.OverwritePrompt = true;
             string filepath;
             if (sf.ShowDialog() != DialogResult.OK)
             {
@@ -607,18 +599,10 @@ namespace Marcador
             }
             filepath = sf.FileName;
 
-            var excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook workbook = excel.Workbooks.Open(filepath);
-
-            //if (File.Exists(filepath))
-            //    File.Delete(filepath);
-
-            AddExcelSheet(dtTeams, workbook);
-
-
-            workbook.Save();
-            CloseExcel(excel, workbook);
-
+            if (File.Exists(filepath))
+                File.Delete(filepath);
+            
+            dtTeams.WriteXml(filepath);
 
             MessageBox.Show("Teams exported succesfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dataExported = true;
@@ -633,17 +617,15 @@ namespace Marcador
             }
 
             string filename = of.FileName;
-            var excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook workbook = excel.Workbooks.Open(filename);
+
             try
             {
-                ReadExcelSheet(dtTeams.TableName, workbook, dtTeams);
-                CloseExcel(excel, workbook);
+                dtTeams.Clear();
+                dtTeams.ReadXml(filename);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error importing the data. Make sure the data has the correct format.\nDetails: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CloseExcel(excel, workbook);
                 return;
             }
 
