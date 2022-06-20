@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.MatchPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -112,6 +112,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.PlayerNameTexBox = new System.Windows.Forms.TextBox();
             this.AddPlayerButton = new System.Windows.Forms.Button();
+            this.LocalNameComboBox = new System.Windows.Forms.ComboBox();
+            this.VisitorNameComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.MatchPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -499,6 +503,8 @@
             // 
             // VisitorGroupBox
             // 
+            this.VisitorGroupBox.Controls.Add(this.label11);
+            this.VisitorGroupBox.Controls.Add(this.VisitorNameComboBox);
             this.VisitorGroupBox.Controls.Add(this.VisitorNameTextBox);
             this.VisitorGroupBox.Controls.Add(this.VisitorScoreLabel);
             this.VisitorGroupBox.Controls.Add(this.VisitorLessButton);
@@ -569,7 +575,7 @@
             this.TimerGroupBox.Size = new System.Drawing.Size(240, 263);
             this.TimerGroupBox.TabIndex = 1;
             this.TimerGroupBox.TabStop = false;
-            this.TimerGroupBox.Text = "Timer";
+            this.TimerGroupBox.Text = "Chrono";
             // 
             // HalfComboBox
             // 
@@ -667,6 +673,8 @@
             // 
             // LocalGroupBox
             // 
+            this.LocalGroupBox.Controls.Add(this.label6);
+            this.LocalGroupBox.Controls.Add(this.LocalNameComboBox);
             this.LocalGroupBox.Controls.Add(this.LocalNameTextBox);
             this.LocalGroupBox.Controls.Add(this.LocalScoreLabel);
             this.LocalGroupBox.Controls.Add(this.LocalLessButton);
@@ -800,21 +808,21 @@
             this.HistoryDataView.AllowUserToAddRows = false;
             this.HistoryDataView.AllowUserToResizeRows = false;
             this.HistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.HistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryDataView.Location = new System.Drawing.Point(3, 3);
             this.HistoryDataView.Name = "HistoryDataView";
             this.HistoryDataView.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.HistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HistoryDataView.Size = new System.Drawing.Size(1099, 473);
             this.HistoryDataView.TabIndex = 0;
@@ -1085,6 +1093,46 @@
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
             // 
+            // LocalNameComboBox
+            // 
+            this.LocalNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LocalNameComboBox.FormattingEnabled = true;
+            this.LocalNameComboBox.Location = new System.Drawing.Point(42, 181);
+            this.LocalNameComboBox.Name = "LocalNameComboBox";
+            this.LocalNameComboBox.Size = new System.Drawing.Size(159, 21);
+            this.LocalNameComboBox.TabIndex = 4;
+            this.LocalNameComboBox.Visible = false;
+            this.LocalNameComboBox.SelectedIndexChanged += new System.EventHandler(this.LocalNameComboBox_SelectedIndexChanged);
+            // 
+            // VisitorNameComboBox
+            // 
+            this.VisitorNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VisitorNameComboBox.FormattingEnabled = true;
+            this.VisitorNameComboBox.Location = new System.Drawing.Point(42, 181);
+            this.VisitorNameComboBox.Name = "VisitorNameComboBox";
+            this.VisitorNameComboBox.Size = new System.Drawing.Size(159, 21);
+            this.VisitorNameComboBox.TabIndex = 5;
+            this.VisitorNameComboBox.Visible = false;
+            this.VisitorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.VisitorNameComboBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(100, 104);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "LOCAL";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(96, 104);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "VISITOR";
+            // 
             // MatchManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1218,5 +1266,9 @@
         private System.Windows.Forms.Button ImportPlayersButton;
         private System.Windows.Forms.Button ExportTeamsButton;
         private System.Windows.Forms.Button ExportPlayersButton;
+        private System.Windows.Forms.ComboBox VisitorNameComboBox;
+        private System.Windows.Forms.ComboBox LocalNameComboBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -113,7 +113,8 @@ namespace Marcador
             dtTeams.Columns.Add("Genre", typeof(string));
             dtTeams.PrimaryKey = keysT;
             dbMatch.Tables.Add(dtTeams);
-
+            dtTeams.RowChanged += DtTeams_RowChanged;
+            dtTeams.RowDeleted += DtTeams_RowDeleted;
             // Create a DataView using the DataTable.
             view = new DataView(dtTeams);
             // Set a DataGrid control's DataSource to the DataView.
@@ -144,7 +145,46 @@ namespace Marcador
             dtPlayers.PrimaryKey = keysP;
             dbMatch.Tables.Add(dtPlayers);
 
-            
+            //Drawing initial
+            this.LocalNameComboBox.Visible = false;
+            this.VisitorNameComboBox.Visible = false;
+
+
+        }
+
+        private void DtTeams_RowDeleted(object sender, DataRowChangeEventArgs e)
+        {
+            if (this.dtTeams.Rows.Count <= 0)
+            {
+                this.LocalNameComboBox.Visible = false;
+                this.VisitorNameComboBox.Visible = false;
+                this.LocalNameComboBox.Items.Clear();
+                this.VisitorNameComboBox.Items.Clear();
+            }
+        }
+
+        private void DtTeams_RowChanged(object sender, DataRowChangeEventArgs e)
+        {
+            if (this.dtTeams.Rows.Count > 0)
+            {
+                this.LocalNameComboBox.Visible = true;
+                this.VisitorNameComboBox.Visible = true;
+                this.LocalNameComboBox.Items.AddRange(this.getTeamList().ToArray());
+                this.VisitorNameComboBox.Items.AddRange(this.getTeamList().ToArray());
+            }
+
+        }
+
+        private List<string> getTeamList()
+        {
+            DataRowCollection drs = this.dtTeams.Rows;
+            List<string> teams = new List<string>();
+            foreach( DataRow row in drs)
+            {
+                teams.Add(row.ItemArray[1].ToString());
+            }
+
+            return teams;
         }
 
         #region Timeout
@@ -799,8 +839,21 @@ namespace Marcador
         }
 
 
+
         #endregion
 
+        private void LocalNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            string selectedName = cb.Text;
+            this.LocalNameTextBox.Text = selectedName;
+        }
 
+        private void VisitorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            string selectedName = cb.Text;
+            this.VisitorNameTextBox.Text = selectedName;
+        }
     }
 }
