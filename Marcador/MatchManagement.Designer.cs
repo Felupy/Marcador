@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.MatchPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +60,6 @@
             this.ControlsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.VisitorGroupBox = new System.Windows.Forms.GroupBox();
-            this.VisitorApplyButton = new System.Windows.Forms.Button();
             this.VisitorNameTextBox = new System.Windows.Forms.TextBox();
             this.VisitorScoreLabel = new System.Windows.Forms.Label();
             this.VisitorLessButton = new System.Windows.Forms.Button();
@@ -76,7 +75,6 @@
             this.PlayButton = new System.Windows.Forms.Button();
             this.CronoLabel = new System.Windows.Forms.Label();
             this.LocalGroupBox = new System.Windows.Forms.GroupBox();
-            this.LocalApplyButton = new System.Windows.Forms.Button();
             this.LocalNameTextBox = new System.Windows.Forms.TextBox();
             this.LocalScoreLabel = new System.Windows.Forms.Label();
             this.LocalLessButton = new System.Windows.Forms.Button();
@@ -95,6 +93,8 @@
             this.TeamsDataView = new System.Windows.Forms.DataGridView();
             this.PlayerDataView = new System.Windows.Forms.DataGridView();
             this.TeamsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ExportTeamsButton = new System.Windows.Forms.Button();
+            this.ImportTeamsButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.TeamGenreComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -103,6 +103,8 @@
             this.TeamNameTextBox = new System.Windows.Forms.TextBox();
             this.AddTeamButton = new System.Windows.Forms.Button();
             this.PlayersGroupBox = new System.Windows.Forms.GroupBox();
+            this.ExportPlayersButton = new System.Windows.Forms.Button();
+            this.ImportPlayersButton = new System.Windows.Forms.Button();
             this.PlayerNumNumBox = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.TeamListComboBox = new System.Windows.Forms.ComboBox();
@@ -110,10 +112,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.PlayerNameTexBox = new System.Windows.Forms.TextBox();
             this.AddPlayerButton = new System.Windows.Forms.Button();
-            this.ImportTeamsButton = new System.Windows.Forms.Button();
-            this.ImportPlayersButton = new System.Windows.Forms.Button();
-            this.ExportTeamsButton = new System.Windows.Forms.Button();
-            this.ExportPlayersButton = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.MatchPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -501,7 +499,6 @@
             // 
             // VisitorGroupBox
             // 
-            this.VisitorGroupBox.Controls.Add(this.VisitorApplyButton);
             this.VisitorGroupBox.Controls.Add(this.VisitorNameTextBox);
             this.VisitorGroupBox.Controls.Add(this.VisitorScoreLabel);
             this.VisitorGroupBox.Controls.Add(this.VisitorLessButton);
@@ -514,16 +511,6 @@
             this.VisitorGroupBox.TabStop = false;
             this.VisitorGroupBox.Text = "Visitor";
             // 
-            // VisitorApplyButton
-            // 
-            this.VisitorApplyButton.Location = new System.Drawing.Point(42, 185);
-            this.VisitorApplyButton.Name = "VisitorApplyButton";
-            this.VisitorApplyButton.Size = new System.Drawing.Size(75, 23);
-            this.VisitorApplyButton.TabIndex = 7;
-            this.VisitorApplyButton.Text = "Apply";
-            this.VisitorApplyButton.UseVisualStyleBackColor = true;
-            this.VisitorApplyButton.Click += new System.EventHandler(this.VisitorApplyButton_Click);
-            // 
             // VisitorNameTextBox
             // 
             this.VisitorNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -532,6 +519,7 @@
             this.VisitorNameTextBox.Size = new System.Drawing.Size(159, 53);
             this.VisitorNameTextBox.TabIndex = 6;
             this.VisitorNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VisitorNameTextBox.TextChanged += new System.EventHandler(this.VisitorNameTextBox_TextChanged);
             // 
             // VisitorScoreLabel
             // 
@@ -679,7 +667,6 @@
             // 
             // LocalGroupBox
             // 
-            this.LocalGroupBox.Controls.Add(this.LocalApplyButton);
             this.LocalGroupBox.Controls.Add(this.LocalNameTextBox);
             this.LocalGroupBox.Controls.Add(this.LocalScoreLabel);
             this.LocalGroupBox.Controls.Add(this.LocalLessButton);
@@ -692,16 +679,6 @@
             this.LocalGroupBox.TabStop = false;
             this.LocalGroupBox.Text = "Local";
             // 
-            // LocalApplyButton
-            // 
-            this.LocalApplyButton.Location = new System.Drawing.Point(42, 185);
-            this.LocalApplyButton.Name = "LocalApplyButton";
-            this.LocalApplyButton.Size = new System.Drawing.Size(75, 23);
-            this.LocalApplyButton.TabIndex = 4;
-            this.LocalApplyButton.Text = "Apply";
-            this.LocalApplyButton.UseVisualStyleBackColor = true;
-            this.LocalApplyButton.Click += new System.EventHandler(this.LocalApplyButton_Click);
-            // 
             // LocalNameTextBox
             // 
             this.LocalNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -710,6 +687,7 @@
             this.LocalNameTextBox.Size = new System.Drawing.Size(159, 53);
             this.LocalNameTextBox.TabIndex = 3;
             this.LocalNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LocalNameTextBox.TextChanged += new System.EventHandler(this.LocalNameTextBox_TextChanged);
             // 
             // LocalScoreLabel
             // 
@@ -822,21 +800,21 @@
             this.HistoryDataView.AllowUserToAddRows = false;
             this.HistoryDataView.AllowUserToResizeRows = false;
             this.HistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.HistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryDataView.Location = new System.Drawing.Point(3, 3);
             this.HistoryDataView.Name = "HistoryDataView";
             this.HistoryDataView.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.HistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HistoryDataView.Size = new System.Drawing.Size(1099, 473);
             this.HistoryDataView.TabIndex = 0;
@@ -915,6 +893,26 @@
             this.TeamsGroupBox.TabIndex = 3;
             this.TeamsGroupBox.TabStop = false;
             this.TeamsGroupBox.Text = "Teams";
+            // 
+            // ExportTeamsButton
+            // 
+            this.ExportTeamsButton.Location = new System.Drawing.Point(439, 46);
+            this.ExportTeamsButton.Name = "ExportTeamsButton";
+            this.ExportTeamsButton.Size = new System.Drawing.Size(98, 24);
+            this.ExportTeamsButton.TabIndex = 10;
+            this.ExportTeamsButton.Text = "Export Teams";
+            this.ExportTeamsButton.UseVisualStyleBackColor = true;
+            this.ExportTeamsButton.Click += new System.EventHandler(this.ExportTeamsButton_Click);
+            // 
+            // ImportTeamsButton
+            // 
+            this.ImportTeamsButton.Location = new System.Drawing.Point(439, 16);
+            this.ImportTeamsButton.Name = "ImportTeamsButton";
+            this.ImportTeamsButton.Size = new System.Drawing.Size(98, 24);
+            this.ImportTeamsButton.TabIndex = 9;
+            this.ImportTeamsButton.Text = "Import Teams";
+            this.ImportTeamsButton.UseVisualStyleBackColor = true;
+            this.ImportTeamsButton.Click += new System.EventHandler(this.ImportTeamsButton_Click);
             // 
             // label10
             // 
@@ -998,6 +996,24 @@
             this.PlayersGroupBox.TabStop = false;
             this.PlayersGroupBox.Text = "Players";
             // 
+            // ExportPlayersButton
+            // 
+            this.ExportPlayersButton.Location = new System.Drawing.Point(471, 47);
+            this.ExportPlayersButton.Name = "ExportPlayersButton";
+            this.ExportPlayersButton.Size = new System.Drawing.Size(69, 21);
+            this.ExportPlayersButton.TabIndex = 15;
+            this.ExportPlayersButton.Text = "Export Players";
+            this.ExportPlayersButton.UseVisualStyleBackColor = true;
+            // 
+            // ImportPlayersButton
+            // 
+            this.ImportPlayersButton.Location = new System.Drawing.Point(469, 19);
+            this.ImportPlayersButton.Name = "ImportPlayersButton";
+            this.ImportPlayersButton.Size = new System.Drawing.Size(69, 21);
+            this.ImportPlayersButton.TabIndex = 14;
+            this.ImportPlayersButton.Text = "Import Players";
+            this.ImportPlayersButton.UseVisualStyleBackColor = true;
+            // 
             // PlayerNumNumBox
             // 
             this.PlayerNumNumBox.Location = new System.Drawing.Point(105, 52);
@@ -1069,44 +1085,6 @@
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
             // 
-            // ImportTeamsButton
-            // 
-            this.ImportTeamsButton.Location = new System.Drawing.Point(439, 16);
-            this.ImportTeamsButton.Name = "ImportTeamsButton";
-            this.ImportTeamsButton.Size = new System.Drawing.Size(98, 24);
-            this.ImportTeamsButton.TabIndex = 9;
-            this.ImportTeamsButton.Text = "Import Teams";
-            this.ImportTeamsButton.UseVisualStyleBackColor = true;
-            this.ImportTeamsButton.Click += new System.EventHandler(this.ImportTeamsButton_Click);
-            // 
-            // ImportPlayersButton
-            // 
-            this.ImportPlayersButton.Location = new System.Drawing.Point(469, 19);
-            this.ImportPlayersButton.Name = "ImportPlayersButton";
-            this.ImportPlayersButton.Size = new System.Drawing.Size(69, 21);
-            this.ImportPlayersButton.TabIndex = 14;
-            this.ImportPlayersButton.Text = "Import Players";
-            this.ImportPlayersButton.UseVisualStyleBackColor = true;
-            // 
-            // ExportTeamsButton
-            // 
-            this.ExportTeamsButton.Location = new System.Drawing.Point(439, 46);
-            this.ExportTeamsButton.Name = "ExportTeamsButton";
-            this.ExportTeamsButton.Size = new System.Drawing.Size(98, 24);
-            this.ExportTeamsButton.TabIndex = 10;
-            this.ExportTeamsButton.Text = "Export Teams";
-            this.ExportTeamsButton.UseVisualStyleBackColor = true;
-            this.ExportTeamsButton.Click += new System.EventHandler(this.ExportTeamsButton_Click);
-            // 
-            // ExportPlayersButton
-            // 
-            this.ExportPlayersButton.Location = new System.Drawing.Point(471, 47);
-            this.ExportPlayersButton.Name = "ExportPlayersButton";
-            this.ExportPlayersButton.Size = new System.Drawing.Size(69, 21);
-            this.ExportPlayersButton.TabIndex = 15;
-            this.ExportPlayersButton.Text = "Export Players";
-            this.ExportPlayersButton.UseVisualStyleBackColor = true;
-            // 
             // MatchManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1169,7 +1147,6 @@
         private System.Windows.Forms.GroupBox ControlsGroupBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox VisitorGroupBox;
-        private System.Windows.Forms.Button VisitorApplyButton;
         private System.Windows.Forms.TextBox VisitorNameTextBox;
         private System.Windows.Forms.Label VisitorScoreLabel;
         private System.Windows.Forms.Button VisitorLessButton;
@@ -1181,7 +1158,6 @@
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.Label CronoLabel;
         private System.Windows.Forms.GroupBox LocalGroupBox;
-        private System.Windows.Forms.Button LocalApplyButton;
         private System.Windows.Forms.TextBox LocalNameTextBox;
         private System.Windows.Forms.Label LocalScoreLabel;
         private System.Windows.Forms.Button LocalLessButton;

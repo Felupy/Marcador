@@ -247,10 +247,19 @@ namespace Marcador
 
         private void LocalPlusButton_Click(object sender, EventArgs e)
         {
-            DataRow dr = dtPlayers.Select("Team = " + this.LocalNameTextBox.Text)[0];
-            //AddGoal ag = new AddGoal(teamPlayers);
-            //if (ag.ShowDialog() != DialogResult.OK)
-            //    return;
+            //try
+            //{
+            //    //DataRow dr = dtTeams.Select("Name = " + this.LocalNameTextBox.Text)[0];
+            //    //AddGoal ag = new AddGoal(teamPlayers);
+            //    //if (ag.ShowDialog() != DialogResult.OK)
+            //    //    return;
+            //}
+            //catch (Exception ex)
+            //{
+            //    string msg_format = string.Format("Failed when assigning the goal to the team({0}).\nDetails: {1}", this.LocalNameTextBox.Text, ex.Message);
+            //    MessageBox.Show(msg_format, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+
 
             
             LocalScore++;
@@ -451,16 +460,6 @@ namespace Marcador
 
         #region OtherButtonClicks
 
-        private void LocalApplyButton_Click(object sender, EventArgs e)
-        {
-            marcador.Team1Label.Text = this.LocalNameTextBox.Text.ToUpper();
-        }
-
-        private void VisitorApplyButton_Click(object sender, EventArgs e)
-        {
-            marcador.Team2Label.Text = this.VisitorNameTextBox.Text.ToUpper();
-        }
-
         #endregion
 
         #region UIEvents
@@ -611,6 +610,20 @@ namespace Marcador
         {
             DataGridViewRow row = this.TeamsDataView.SelectedRows[0];
             row.Cells[3].Value = Convert.ToInt32(row.Cells[3].Value) - 1;
+        }
+
+        #endregion
+
+
+        #region EventChanged
+        private void LocalNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            marcador.Team1Label.Text = this.LocalNameTextBox.Text.ToUpper();
+        }
+
+        private void VisitorNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            marcador.Team2Label.Text = this.VisitorNameTextBox.Text.ToUpper();
         }
 
         #endregion
@@ -785,19 +798,8 @@ namespace Marcador
 
         }
 
+
         #endregion
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
