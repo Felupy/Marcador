@@ -808,8 +808,8 @@ namespace Marcador
                 {
                     if ((r["Name"].ToString() == this.TeamNameTextBox.Text) && (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
                         throw new TeamException("Name(" + this.TeamGenreComboBox.SelectedItem.ToString() + ")");
-                    if ((r["Country"].ToString() == this.CountryTextBox.Text) && (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
-                        throw new TeamException("Country(" + this.TeamGenreComboBox.SelectedItem.ToString() + ")");
+                    //if ((r["Country"].ToString() == this.CountryTextBox.Text) && (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
+                    //    throw new TeamException("Country(" + this.TeamGenreComboBox.SelectedItem.ToString() + ")");
                 }
 
 
