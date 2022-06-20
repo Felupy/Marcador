@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.MatchPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -116,6 +116,8 @@
             this.VisitorNameComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.StopTimeoutButton = new System.Windows.Forms.Button();
+            this.TimeoutBox = new System.Windows.Forms.GroupBox();
             this.TabControl.SuspendLayout();
             this.MatchPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -145,6 +147,7 @@
             this.TeamsGroupBox.SuspendLayout();
             this.PlayersGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerNumNumBox)).BeginInit();
+            this.TimeoutBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -560,10 +563,9 @@
             // 
             // TimerGroupBox
             // 
+            this.TimerGroupBox.Controls.Add(this.TimeoutBox);
             this.TimerGroupBox.Controls.Add(this.HalfComboBox);
             this.TimerGroupBox.Controls.Add(this.TimeoutLabel);
-            this.TimerGroupBox.Controls.Add(this.StartTimeoutButton);
-            this.TimerGroupBox.Controls.Add(this.TimeoutNum);
             this.TimerGroupBox.Controls.Add(this.ResetButton);
             this.TimerGroupBox.Controls.Add(this.StopButton);
             this.TimerGroupBox.Controls.Add(this.PauseButton);
@@ -604,9 +606,9 @@
             // 
             // StartTimeoutButton
             // 
-            this.StartTimeoutButton.Location = new System.Drawing.Point(109, 229);
+            this.StartTimeoutButton.Location = new System.Drawing.Point(83, 10);
             this.StartTimeoutButton.Name = "StartTimeoutButton";
-            this.StartTimeoutButton.Size = new System.Drawing.Size(108, 23);
+            this.StartTimeoutButton.Size = new System.Drawing.Size(111, 23);
             this.StartTimeoutButton.TabIndex = 9;
             this.StartTimeoutButton.Text = "Start Timeout";
             this.StartTimeoutButton.UseVisualStyleBackColor = true;
@@ -614,7 +616,7 @@
             // 
             // TimeoutNum
             // 
-            this.TimeoutNum.Location = new System.Drawing.Point(39, 232);
+            this.TimeoutNum.Location = new System.Drawing.Point(13, 26);
             this.TimeoutNum.Name = "TimeoutNum";
             this.TimeoutNum.Size = new System.Drawing.Size(64, 20);
             this.TimeoutNum.TabIndex = 8;
@@ -622,7 +624,7 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(39, 175);
+            this.ResetButton.Location = new System.Drawing.Point(64, 160);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(75, 23);
             this.ResetButton.TabIndex = 7;
@@ -632,7 +634,7 @@
             // 
             // StopButton
             // 
-            this.StopButton.Location = new System.Drawing.Point(138, 146);
+            this.StopButton.Location = new System.Drawing.Point(162, 131);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(41, 23);
             this.StopButton.TabIndex = 6;
@@ -642,7 +644,7 @@
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(82, 146);
+            this.PauseButton.Location = new System.Drawing.Point(104, 131);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(50, 23);
             this.PauseButton.TabIndex = 5;
@@ -652,7 +654,7 @@
             // 
             // PlayButton
             // 
-            this.PlayButton.Location = new System.Drawing.Point(39, 146);
+            this.PlayButton.Location = new System.Drawing.Point(61, 131);
             this.PlayButton.Name = "PlayButton";
             this.PlayButton.Size = new System.Drawing.Size(37, 23);
             this.PlayButton.TabIndex = 4;
@@ -808,21 +810,21 @@
             this.HistoryDataView.AllowUserToAddRows = false;
             this.HistoryDataView.AllowUserToResizeRows = false;
             this.HistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.HistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryDataView.Location = new System.Drawing.Point(3, 3);
             this.HistoryDataView.Name = "HistoryDataView";
             this.HistoryDataView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.HistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HistoryDataView.Size = new System.Drawing.Size(1099, 473);
             this.HistoryDataView.TabIndex = 0;
@@ -1133,6 +1135,28 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "VISITOR";
             // 
+            // StopTimeoutButton
+            // 
+            this.StopTimeoutButton.Location = new System.Drawing.Point(83, 39);
+            this.StopTimeoutButton.Name = "StopTimeoutButton";
+            this.StopTimeoutButton.Size = new System.Drawing.Size(111, 23);
+            this.StopTimeoutButton.TabIndex = 12;
+            this.StopTimeoutButton.Text = "Stop Timeout";
+            this.StopTimeoutButton.UseVisualStyleBackColor = true;
+            this.StopTimeoutButton.Click += new System.EventHandler(this.StopTimeoutButton_Click);
+            // 
+            // TimeoutBox
+            // 
+            this.TimeoutBox.Controls.Add(this.StartTimeoutButton);
+            this.TimeoutBox.Controls.Add(this.StopTimeoutButton);
+            this.TimeoutBox.Controls.Add(this.TimeoutNum);
+            this.TimeoutBox.Location = new System.Drawing.Point(21, 189);
+            this.TimeoutBox.Name = "TimeoutBox";
+            this.TimeoutBox.Size = new System.Drawing.Size(200, 68);
+            this.TimeoutBox.TabIndex = 13;
+            this.TimeoutBox.TabStop = false;
+            this.TimeoutBox.Text = "Timeout";
+            // 
             // MatchManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1177,6 +1201,7 @@
             this.PlayersGroupBox.ResumeLayout(false);
             this.PlayersGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerNumNumBox)).EndInit();
+            this.TimeoutBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1270,5 +1295,7 @@
         private System.Windows.Forms.ComboBox LocalNameComboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox TimeoutBox;
+        private System.Windows.Forms.Button StopTimeoutButton;
     }
 }

@@ -128,7 +128,7 @@ namespace Marcador
             this.TimeOutLabel.Padding = new System.Windows.Forms.Padding(3);
             this.TimeOutLabel.Size = new System.Drawing.Size(104, 42);
             this.TimeOutLabel.TabIndex = 5;
-            this.TimeOutLabel.Text = "0:00";
+            this.TimeOutLabel.Text = "00:00";
             this.TimeOutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TimeOutLabel.Visible = false;
             // 

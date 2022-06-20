@@ -163,13 +163,14 @@ namespace Marcador
                     return;
                 tTimeout.Interval = 1000; //1s
                 tTimeout.Tick += t_Tick;
-                marcador.TimeOutLabel.Visible = true;
-                this.TimeoutLabel.Visible = true;
                 Timeout = (int)this.TimeoutNum.Value;
 
                 swClock.Stop();
                 tTimeout.Start();
                 swTimeout.Start();
+
+                marcador.TimeOutLabel.Visible = true;
+                this.TimeoutLabel.Visible = true;
                 isTimeoutRunning = true;
 
 
@@ -179,6 +180,29 @@ namespace Marcador
                 if (marcador == null)
                     MessageBox.Show("Scoreboard not showing. Please show the scoreboard.", "Scoreboard error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void StopTimeoutButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (isTimeoutRunning)
+                {
+                    tTimeout.Stop();
+                    swTimeout.Reset();
+                    marcador.TimeOutLabel.Visible = false;
+                    this.TimeoutLabel.Visible = false;
+                    isTimeoutRunning = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (marcador == null)
+                    MessageBox.Show("Scoreboard not showing. Please show the scoreboard.", "Scoreboard error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
 
         }
 
@@ -864,6 +888,7 @@ namespace Marcador
 
 
         #endregion
+
 
     }
 
