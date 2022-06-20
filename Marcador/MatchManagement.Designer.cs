@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.MatchPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -810,21 +810,21 @@
             this.HistoryDataView.AllowUserToAddRows = false;
             this.HistoryDataView.AllowUserToResizeRows = false;
             this.HistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.HistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryDataView.Location = new System.Drawing.Point(3, 3);
             this.HistoryDataView.Name = "HistoryDataView";
             this.HistoryDataView.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.HistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HistoryDataView.Size = new System.Drawing.Size(1099, 473);
             this.HistoryDataView.TabIndex = 0;
@@ -1008,12 +1008,13 @@
             // 
             // ExportPlayersButton
             // 
-            this.ExportPlayersButton.Location = new System.Drawing.Point(471, 47);
+            this.ExportPlayersButton.Location = new System.Drawing.Point(469, 47);
             this.ExportPlayersButton.Name = "ExportPlayersButton";
             this.ExportPlayersButton.Size = new System.Drawing.Size(69, 21);
             this.ExportPlayersButton.TabIndex = 15;
             this.ExportPlayersButton.Text = "Export Players";
             this.ExportPlayersButton.UseVisualStyleBackColor = true;
+            this.ExportPlayersButton.Click += new System.EventHandler(this.ExportPlayersButton_Click);
             // 
             // ImportPlayersButton
             // 
@@ -1023,6 +1024,7 @@
             this.ImportPlayersButton.TabIndex = 14;
             this.ImportPlayersButton.Text = "Import Players";
             this.ImportPlayersButton.UseVisualStyleBackColor = true;
+            this.ImportPlayersButton.Click += new System.EventHandler(this.ImportPlayersButton_Click);
             // 
             // PlayerNumNumBox
             // 

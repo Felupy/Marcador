@@ -430,7 +430,7 @@ namespace Marcador
         {
             SaveFileDialog sf = new SaveFileDialog();
             sf.InitialDirectory = Directory.GetCurrentDirectory() + ExportsDir;
-            sf.Filter = "CSV files (*.csv)|*.xlsx|All files (*.*)|*.*";
+            sf.Filter = "XML files (*.xml)|*.xlsx|All files (*.*)|*.*";
             sf.OverwritePrompt = true;
 
             string filepath;
@@ -648,6 +648,52 @@ namespace Marcador
             row.Cells[3].Value = Convert.ToInt32(row.Cells[3].Value) - 1;
         }
 
+        private void ExportPlayersButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.InitialDirectory = Directory.GetCurrentDirectory() + ExportsDir;
+            sf.Filter = "XML files (*.xml)|*.xlsx|All files (*.*)|*.*";
+            sf.OverwritePrompt = true;
+
+            string filepath;
+            if (sf.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            filepath = sf.FileName;
+
+            if (File.Exists(filepath))
+                File.Delete(filepath);
+
+            dtPlayers.WriteXml(filepath);
+
+            MessageBox.Show("Players exported succesfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ImportPlayersButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            if (of.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string filename = of.FileName;
+
+            try
+            {
+                dtPlayers.Clear();
+                dtPlayers.ReadXml(filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing the data. Make sure the data has the correct format.\nDetails: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Players succesfully imported.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         #endregion
 
         #region DataEventChanged
@@ -698,71 +744,6 @@ namespace Marcador
         #endregion
 
         #region OtherMethods
-
-        private static void AddExcelSheet(System.Data.DataTable dt, Workbook wb)
-        {
-            Sheets sheets = wb.Sheets;
-            Worksheet newSheet = sheets.Add();
-            newSheet.Name = dt.TableName;
-
-            int iCol = 0;
-            foreach (DataColumn c in dt.Columns)
-            {
-                iCol++;
-                newSheet.Cells[1, iCol] = c.ColumnName;
-            }
-
-            int iRow = 0;
-            foreach (DataRow r in dt.Rows)
-            {
-                iRow++;
-                // add each row's cell data...
-                iCol = 0;
-                foreach (DataColumn c in dt.Columns)
-                {
-                    iCol++;
-                    newSheet.Cells[iRow + 1, iCol] = r[c.ColumnName];
-                }
-            }
-            newSheet.Columns.AutoFit();
-        }
-
-        private static void ReadExcelSheet(string sheetName, Workbook wb, System.Data.DataTable dt)
-        {
-
-            dt.Clear();
-            Sheets sheets = wb.Sheets;
-            Worksheet sheet = sheets[sheetName];
-            dt.TableName = sheetName;
-
-
-
-            for (int iRow = 1; iRow < sheet.UsedRange.Rows.Count; iRow++)
-            {
-                // add each row's cell data...
-                DataRow r = dt.NewRow();
-                int iCol = 0;
-                foreach (DataColumn c in dt.Columns)
-                {
-                    iCol++;
-                    r[c.ColumnName] = sheet.Cells[iRow + 1, iCol].Text;
-                }
-                dt.Rows.Add(r);
-            }
-
-
-
-        }
-
-        private static void CloseExcel(Microsoft.Office.Interop.Excel.Application excel, Workbook wb)
-        {
-            wb.Close();
-            excel.Quit();
-            //find excel process and close
-            Process[] localByName = Process.GetProcessesByName("EXCEL");
-            foreach (Process p in localByName)
-                p.Kill();
-        }
 
         private void AddMatchToDataTable(System.Data.DataTable dt)
         {
@@ -869,9 +850,10 @@ namespace Marcador
 
 
 
+
         #endregion
 
-
+       
     }
 
 }
