@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Marcador
 {
-    
+
 
     public partial class MatchManagement : Form
     {
@@ -119,7 +119,7 @@ namespace Marcador
             view = new DataView(dtTeams);
             // Set a DataGrid control's DataSource to the DataView.
             this.TeamsDataView.DataSource = view;
-            
+
             this.TeamListComboBox.DataSource = dtTeams;
             this.TeamListComboBox.ValueMember = "Name";
             this.TeamListComboBox.DisplayMember = "Name";
@@ -152,41 +152,6 @@ namespace Marcador
 
         }
 
-        private void DtTeams_RowDeleted(object sender, DataRowChangeEventArgs e)
-        {
-            if (this.dtTeams.Rows.Count <= 0)
-            {
-                this.LocalNameComboBox.Visible = false;
-                this.VisitorNameComboBox.Visible = false;
-                this.LocalNameComboBox.Items.Clear();
-                this.VisitorNameComboBox.Items.Clear();
-            }
-        }
-
-        private void DtTeams_RowChanged(object sender, DataRowChangeEventArgs e)
-        {
-            if (this.dtTeams.Rows.Count > 0)
-            {
-                this.LocalNameComboBox.Visible = true;
-                this.VisitorNameComboBox.Visible = true;
-                this.LocalNameComboBox.Items.AddRange(this.getTeamList().ToArray());
-                this.VisitorNameComboBox.Items.AddRange(this.getTeamList().ToArray());
-            }
-
-        }
-
-        private List<string> getTeamList()
-        {
-            DataRowCollection drs = this.dtTeams.Rows;
-            List<string> teams = new List<string>();
-            foreach( DataRow row in drs)
-            {
-                teams.Add(row.ItemArray[1].ToString());
-            }
-
-            return teams;
-        }
-
         #region Timeout
 
         private void StartTimeoutButton_Click(object sender, EventArgs e)
@@ -201,7 +166,7 @@ namespace Marcador
                 marcador.TimeOutLabel.Visible = true;
                 this.TimeoutLabel.Visible = true;
                 Timeout = (int)this.TimeoutNum.Value;
-                
+
                 swClock.Stop();
                 tTimeout.Start();
                 swTimeout.Start();
@@ -212,9 +177,9 @@ namespace Marcador
             catch (Exception ex)
             {
                 if (marcador == null)
-                    MessageBox.Show("Scoreboard not showing. Please show the scoreboard.","Scoreboard error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Scoreboard not showing. Please show the scoreboard.", "Scoreboard error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         void t_Tick(object sender, EventArgs e)
@@ -255,7 +220,7 @@ namespace Marcador
 
             if (gameRunning)
             {
-                 marcador.CronoLabel.Text = time_str;
+                marcador.CronoLabel.Text = time_str;
                 this.CronoLabel.Text = time_str;
             }
 
@@ -301,7 +266,7 @@ namespace Marcador
             //}
 
 
-            
+
             LocalScore++;
             this.LocalScoreLabel.Text = LocalScore.ToString();
             marcador.ScoreLabel.Text = LocalScore.ToString() + " - " + VisitorScore.ToString();
@@ -412,7 +377,7 @@ namespace Marcador
                 MessageBox.Show("Game is currently running. Stop it before saving.", "Game running!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             gameIdentifier++;
             AddMatchToDataTable(dtMatchs);
             dataExported = false;
@@ -434,7 +399,7 @@ namespace Marcador
             this.LocalNameTextBox.Text = "";
             this.VisitorNameTextBox.Text = "";
             this.ExpulsionDataGridView.Rows.Clear();
-            
+
         }
 
         private void ExportButton_Click(object sender, EventArgs e)
@@ -495,7 +460,7 @@ namespace Marcador
             dataExported = false;
 
         }
-  
+
         #endregion
 
         #region OtherButtonClicks
@@ -537,13 +502,38 @@ namespace Marcador
 
         private void MatchManagement_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(dataExported)
+            if (dataExported)
                 e.Cancel = (MessageBox.Show("Are you sure you want to exit?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes);
             else
                 e.Cancel = (MessageBox.Show("You didn't export the games.\nAre you sure you want to exit?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes);
 
-            
+
         }
+
+        private void LocalNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            marcador.Team1Label.Text = this.LocalNameTextBox.Text.ToUpper();
+        }
+
+        private void VisitorNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            marcador.Team2Label.Text = this.VisitorNameTextBox.Text.ToUpper();
+        }
+
+        private void LocalNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            string selectedName = cb.Text;
+            this.LocalNameTextBox.Text = selectedName;
+        }
+
+        private void VisitorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            string selectedName = cb.Text;
+            this.VisitorNameTextBox.Text = selectedName;
+        }
+
 
         #endregion
 
@@ -563,7 +553,7 @@ namespace Marcador
 
             DataView dv = dtPlayers.DefaultView;
 
-            dv.RowFilter = string.Format("Team = '{0}({1})'", row.Cells[1].Value.ToString(),row.Cells[4].Value.ToString());
+            dv.RowFilter = string.Format("Team = '{0}({1})'", row.Cells[1].Value.ToString(), row.Cells[4].Value.ToString());
             // Set a DataGrid control's DataSource to the DataView.
             this.PlayerDataView.DataSource = dv;
             this.PlayerDataView.Update();
@@ -654,16 +644,49 @@ namespace Marcador
 
         #endregion
 
+        #region DataEventChanged
 
-        #region EventChanged
-        private void LocalNameTextBox_TextChanged(object sender, EventArgs e)
+        private void DtTeams_RowDeleted(object sender, DataRowChangeEventArgs e)
         {
-            marcador.Team1Label.Text = this.LocalNameTextBox.Text.ToUpper();
+            if (this.dtTeams.Rows.Count <= 0)
+            {
+                this.LocalNameComboBox.Visible = false;
+                this.VisitorNameComboBox.Visible = false;
+                this.LocalNameComboBox.Items.Clear();
+                this.VisitorNameComboBox.Items.Clear();
+            }
         }
 
-        private void VisitorNameTextBox_TextChanged(object sender, EventArgs e)
+        private void DtTeams_RowChanged(object sender, DataRowChangeEventArgs e)
         {
-            marcador.Team2Label.Text = this.VisitorNameTextBox.Text.ToUpper();
+            if (this.dtTeams.Rows.Count > 0)
+            {
+                this.LocalNameComboBox.Items.Clear();
+                this.VisitorNameComboBox.Items.Clear();
+                this.LocalNameComboBox.Items.AddRange(this.getTeamList().ToArray());
+                this.VisitorNameComboBox.Items.AddRange(this.getTeamList().ToArray());
+                this.LocalNameComboBox.Visible = true;
+                this.VisitorNameComboBox.Visible = true;
+
+            }
+
+        }
+
+        #endregion
+
+        #region DataHandleMethods
+
+
+        private List<string> getTeamList()
+        {
+            DataRowCollection drs = this.dtTeams.Rows;
+            List<string> teams = new List<string>();
+            foreach (DataRow row in drs)
+            {
+                teams.Add(row.ItemArray[1].ToString());
+            }
+
+            return teams;
         }
 
         #endregion
@@ -671,11 +694,11 @@ namespace Marcador
         #region OtherMethods
 
         private static void AddExcelSheet(System.Data.DataTable dt, Workbook wb)
-        {    
+        {
             Sheets sheets = wb.Sheets;
             Worksheet newSheet = sheets.Add();
             newSheet.Name = dt.TableName;
-            
+
             int iCol = 0;
             foreach (DataColumn c in dt.Columns)
             {
@@ -721,7 +744,7 @@ namespace Marcador
                 dt.Rows.Add(r);
             }
 
-            
+
 
         }
 
@@ -761,7 +784,7 @@ namespace Marcador
                 {
                     if ((r["Name"].ToString() == this.TeamNameTextBox.Text) && (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
                         throw new TeamException("Name(" + this.TeamGenreComboBox.SelectedItem.ToString() + ")");
-                    if ((r["Country"].ToString() == this.CountryTextBox.Text)&& (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
+                    if ((r["Country"].ToString() == this.CountryTextBox.Text) && (r["Genre"].ToString() == this.TeamGenreComboBox.SelectedItem.ToString()))
                         throw new TeamException("Country(" + this.TeamGenreComboBox.SelectedItem.ToString() + ")");
                 }
 
@@ -792,7 +815,7 @@ namespace Marcador
             {
                 string teamItem = this.TeamListComboBox.Text;
                 string teamName = teamItem.Split('(')[0];
-                string teamGen = teamItem.Split('(')[1].Replace(")","");
+                string teamGen = teamItem.Split('(')[1].Replace(")", "");
                 //Check isn't already added
                 DataRow[] resultTeam = dtTeams.Select("Name = '" + teamName + "' AND Genre = '" + teamGen + "'");
                 DataRow[] result = dt.Select("Team = '" + teamItem + "'");
@@ -806,8 +829,8 @@ namespace Marcador
                         if (Convert.ToInt32(r["Number"]) == this.PlayerNumNumBox.Value)
                             throw new PlayerException("Number");
                     }
-                    
-                    
+
+
                 }
 
                 //add to DB
@@ -817,15 +840,15 @@ namespace Marcador
                 dr["Number"] = this.PlayerNumNumBox.Value;
                 dr["Team"] = teamItem;
                 dr["Goals"] = 0;
-                
+
                 dt.Rows.Add(dr);
 
                 //Update number of player in team
                 if (resultTeam.Length > 0)
                 {
-                    resultTeam[0]["Players"] = Convert.ToInt32(resultTeam[0]["Players"]) + 1; 
+                    resultTeam[0]["Players"] = Convert.ToInt32(resultTeam[0]["Players"]) + 1;
                 }
-                
+
             }
             catch (PlayerException ex)
             {
@@ -842,18 +865,6 @@ namespace Marcador
 
         #endregion
 
-        private void LocalNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox cb = sender as ComboBox;
-            string selectedName = cb.Text;
-            this.LocalNameTextBox.Text = selectedName;
-        }
-
-        private void VisitorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox cb = sender as ComboBox;
-            string selectedName = cb.Text;
-            this.VisitorNameTextBox.Text = selectedName;
-        }
     }
+
 }
