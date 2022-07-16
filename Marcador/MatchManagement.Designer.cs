@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.MatchPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,25 +56,32 @@
             this.LocalExpulsionComboBox = new System.Windows.Forms.ComboBox();
             this.AddLocalExpButton = new System.Windows.Forms.Button();
             this.MatchGroupBox = new System.Windows.Forms.GroupBox();
+            this.SH_LocalSB_Button = new System.Windows.Forms.CheckBox();
             this.SHScoreButton = new System.Windows.Forms.CheckBox();
             this.ControlsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.VisitorGroupBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.VisitorNameComboBox = new System.Windows.Forms.ComboBox();
             this.VisitorNameTextBox = new System.Windows.Forms.TextBox();
             this.VisitorScoreLabel = new System.Windows.Forms.Label();
             this.VisitorLessButton = new System.Windows.Forms.Button();
             this.VisitorPlusButton = new System.Windows.Forms.Button();
             this.TimerGroupBox = new System.Windows.Forms.GroupBox();
+            this.TimeoutBox = new System.Windows.Forms.GroupBox();
+            this.StartTimeoutButton = new System.Windows.Forms.Button();
+            this.StopTimeoutButton = new System.Windows.Forms.Button();
+            this.TimeoutNum = new System.Windows.Forms.NumericUpDown();
             this.HalfComboBox = new System.Windows.Forms.ComboBox();
             this.TimeoutLabel = new System.Windows.Forms.Label();
-            this.StartTimeoutButton = new System.Windows.Forms.Button();
-            this.TimeoutNum = new System.Windows.Forms.NumericUpDown();
             this.ResetButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
             this.PauseButton = new System.Windows.Forms.Button();
             this.PlayButton = new System.Windows.Forms.Button();
             this.CronoLabel = new System.Windows.Forms.Label();
             this.LocalGroupBox = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.LocalNameComboBox = new System.Windows.Forms.ComboBox();
             this.LocalNameTextBox = new System.Windows.Forms.TextBox();
             this.LocalScoreLabel = new System.Windows.Forms.Label();
             this.LocalLessButton = new System.Windows.Forms.Button();
@@ -112,12 +119,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.PlayerNameTexBox = new System.Windows.Forms.TextBox();
             this.AddPlayerButton = new System.Windows.Forms.Button();
-            this.LocalNameComboBox = new System.Windows.Forms.ComboBox();
-            this.VisitorNameComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.StopTimeoutButton = new System.Windows.Forms.Button();
-            this.TimeoutBox = new System.Windows.Forms.GroupBox();
+            this.MoveWindowLeft_Button = new System.Windows.Forms.Button();
+            this.MoveWindowRight_Button = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
             this.MatchPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -135,6 +138,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.VisitorGroupBox.SuspendLayout();
             this.TimerGroupBox.SuspendLayout();
+            this.TimeoutBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeoutNum)).BeginInit();
             this.LocalGroupBox.SuspendLayout();
             this.RefereesGroupBox.SuspendLayout();
@@ -147,7 +151,6 @@
             this.TeamsGroupBox.SuspendLayout();
             this.PlayersGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerNumNumBox)).BeginInit();
-            this.TimeoutBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -456,6 +459,9 @@
             // 
             // MatchGroupBox
             // 
+            this.MatchGroupBox.Controls.Add(this.MoveWindowRight_Button);
+            this.MatchGroupBox.Controls.Add(this.MoveWindowLeft_Button);
+            this.MatchGroupBox.Controls.Add(this.SH_LocalSB_Button);
             this.MatchGroupBox.Controls.Add(this.SHScoreButton);
             this.MatchGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatchGroupBox.Location = new System.Drawing.Point(3, 3);
@@ -464,6 +470,17 @@
             this.MatchGroupBox.TabIndex = 0;
             this.MatchGroupBox.TabStop = false;
             this.MatchGroupBox.Text = "Match";
+            // 
+            // SH_LocalSB_Button
+            // 
+            this.SH_LocalSB_Button.Appearance = System.Windows.Forms.Appearance.Button;
+            this.SH_LocalSB_Button.Location = new System.Drawing.Point(39, 49);
+            this.SH_LocalSB_Button.Name = "SH_LocalSB_Button";
+            this.SH_LocalSB_Button.Size = new System.Drawing.Size(71, 55);
+            this.SH_LocalSB_Button.TabIndex = 1;
+            this.SH_LocalSB_Button.Text = "Show/Hide Local Display";
+            this.SH_LocalSB_Button.UseVisualStyleBackColor = true;
+            this.SH_LocalSB_Button.CheckedChanged += new System.EventHandler(this.SH_LocalSB_Button_CheckedChanged);
             // 
             // SHScoreButton
             // 
@@ -519,6 +536,26 @@
             this.VisitorGroupBox.TabIndex = 2;
             this.VisitorGroupBox.TabStop = false;
             this.VisitorGroupBox.Text = "Visitor";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(96, 104);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "VISITOR";
+            // 
+            // VisitorNameComboBox
+            // 
+            this.VisitorNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VisitorNameComboBox.FormattingEnabled = true;
+            this.VisitorNameComboBox.Location = new System.Drawing.Point(42, 181);
+            this.VisitorNameComboBox.Name = "VisitorNameComboBox";
+            this.VisitorNameComboBox.Size = new System.Drawing.Size(159, 21);
+            this.VisitorNameComboBox.TabIndex = 5;
+            this.VisitorNameComboBox.Visible = false;
+            this.VisitorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.VisitorNameComboBox_SelectedIndexChanged);
             // 
             // VisitorNameTextBox
             // 
@@ -579,6 +616,46 @@
             this.TimerGroupBox.TabStop = false;
             this.TimerGroupBox.Text = "Chrono";
             // 
+            // TimeoutBox
+            // 
+            this.TimeoutBox.Controls.Add(this.StartTimeoutButton);
+            this.TimeoutBox.Controls.Add(this.StopTimeoutButton);
+            this.TimeoutBox.Controls.Add(this.TimeoutNum);
+            this.TimeoutBox.Location = new System.Drawing.Point(21, 189);
+            this.TimeoutBox.Name = "TimeoutBox";
+            this.TimeoutBox.Size = new System.Drawing.Size(200, 68);
+            this.TimeoutBox.TabIndex = 13;
+            this.TimeoutBox.TabStop = false;
+            this.TimeoutBox.Text = "Timeout";
+            // 
+            // StartTimeoutButton
+            // 
+            this.StartTimeoutButton.Location = new System.Drawing.Point(83, 10);
+            this.StartTimeoutButton.Name = "StartTimeoutButton";
+            this.StartTimeoutButton.Size = new System.Drawing.Size(111, 23);
+            this.StartTimeoutButton.TabIndex = 9;
+            this.StartTimeoutButton.Text = "Start Timeout";
+            this.StartTimeoutButton.UseVisualStyleBackColor = true;
+            this.StartTimeoutButton.Click += new System.EventHandler(this.StartTimeoutButton_Click);
+            // 
+            // StopTimeoutButton
+            // 
+            this.StopTimeoutButton.Location = new System.Drawing.Point(83, 39);
+            this.StopTimeoutButton.Name = "StopTimeoutButton";
+            this.StopTimeoutButton.Size = new System.Drawing.Size(111, 23);
+            this.StopTimeoutButton.TabIndex = 12;
+            this.StopTimeoutButton.Text = "Stop Timeout";
+            this.StopTimeoutButton.UseVisualStyleBackColor = true;
+            this.StopTimeoutButton.Click += new System.EventHandler(this.StopTimeoutButton_Click);
+            // 
+            // TimeoutNum
+            // 
+            this.TimeoutNum.Location = new System.Drawing.Point(13, 26);
+            this.TimeoutNum.Name = "TimeoutNum";
+            this.TimeoutNum.Size = new System.Drawing.Size(64, 20);
+            this.TimeoutNum.TabIndex = 8;
+            this.TimeoutNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // HalfComboBox
             // 
             this.HalfComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -603,24 +680,6 @@
             this.TimeoutLabel.Text = "00:00";
             this.TimeoutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TimeoutLabel.Visible = false;
-            // 
-            // StartTimeoutButton
-            // 
-            this.StartTimeoutButton.Location = new System.Drawing.Point(83, 10);
-            this.StartTimeoutButton.Name = "StartTimeoutButton";
-            this.StartTimeoutButton.Size = new System.Drawing.Size(111, 23);
-            this.StartTimeoutButton.TabIndex = 9;
-            this.StartTimeoutButton.Text = "Start Timeout";
-            this.StartTimeoutButton.UseVisualStyleBackColor = true;
-            this.StartTimeoutButton.Click += new System.EventHandler(this.StartTimeoutButton_Click);
-            // 
-            // TimeoutNum
-            // 
-            this.TimeoutNum.Location = new System.Drawing.Point(13, 26);
-            this.TimeoutNum.Name = "TimeoutNum";
-            this.TimeoutNum.Size = new System.Drawing.Size(64, 20);
-            this.TimeoutNum.TabIndex = 8;
-            this.TimeoutNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ResetButton
             // 
@@ -688,6 +747,26 @@
             this.LocalGroupBox.TabIndex = 0;
             this.LocalGroupBox.TabStop = false;
             this.LocalGroupBox.Text = "Local";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(100, 104);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "LOCAL";
+            // 
+            // LocalNameComboBox
+            // 
+            this.LocalNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LocalNameComboBox.FormattingEnabled = true;
+            this.LocalNameComboBox.Location = new System.Drawing.Point(42, 181);
+            this.LocalNameComboBox.Name = "LocalNameComboBox";
+            this.LocalNameComboBox.Size = new System.Drawing.Size(159, 21);
+            this.LocalNameComboBox.TabIndex = 4;
+            this.LocalNameComboBox.Visible = false;
+            this.LocalNameComboBox.SelectedIndexChanged += new System.EventHandler(this.LocalNameComboBox_SelectedIndexChanged);
             // 
             // LocalNameTextBox
             // 
@@ -810,21 +889,21 @@
             this.HistoryDataView.AllowUserToAddRows = false;
             this.HistoryDataView.AllowUserToResizeRows = false;
             this.HistoryDataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.HistoryDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HistoryDataView.Location = new System.Drawing.Point(3, 3);
             this.HistoryDataView.Name = "HistoryDataView";
             this.HistoryDataView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HistoryDataView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.HistoryDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HistoryDataView.Size = new System.Drawing.Size(1099, 473);
             this.HistoryDataView.TabIndex = 0;
@@ -1097,67 +1176,31 @@
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
             // 
-            // LocalNameComboBox
+            // MoveWindowLeft_Button
             // 
-            this.LocalNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LocalNameComboBox.FormattingEnabled = true;
-            this.LocalNameComboBox.Location = new System.Drawing.Point(42, 181);
-            this.LocalNameComboBox.Name = "LocalNameComboBox";
-            this.LocalNameComboBox.Size = new System.Drawing.Size(159, 21);
-            this.LocalNameComboBox.TabIndex = 4;
-            this.LocalNameComboBox.Visible = false;
-            this.LocalNameComboBox.SelectedIndexChanged += new System.EventHandler(this.LocalNameComboBox_SelectedIndexChanged);
+            this.MoveWindowLeft_Button.BackColor = System.Drawing.Color.Transparent;
+            this.MoveWindowLeft_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveWindowLeft_Button.ForeColor = System.Drawing.Color.Black;
+            this.MoveWindowLeft_Button.Location = new System.Drawing.Point(6, 49);
+            this.MoveWindowLeft_Button.Name = "MoveWindowLeft_Button";
+            this.MoveWindowLeft_Button.Size = new System.Drawing.Size(27, 55);
+            this.MoveWindowLeft_Button.TabIndex = 2;
+            this.MoveWindowLeft_Button.Text = "<";
+            this.MoveWindowLeft_Button.UseVisualStyleBackColor = false;
+            this.MoveWindowLeft_Button.Click += new System.EventHandler(this.MoveWindowLeft_Button_Click);
             // 
-            // VisitorNameComboBox
+            // MoveWindowRight_Button
             // 
-            this.VisitorNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.VisitorNameComboBox.FormattingEnabled = true;
-            this.VisitorNameComboBox.Location = new System.Drawing.Point(42, 181);
-            this.VisitorNameComboBox.Name = "VisitorNameComboBox";
-            this.VisitorNameComboBox.Size = new System.Drawing.Size(159, 21);
-            this.VisitorNameComboBox.TabIndex = 5;
-            this.VisitorNameComboBox.Visible = false;
-            this.VisitorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.VisitorNameComboBox_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(100, 104);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "LOCAL";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(96, 104);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "VISITOR";
-            // 
-            // StopTimeoutButton
-            // 
-            this.StopTimeoutButton.Location = new System.Drawing.Point(83, 39);
-            this.StopTimeoutButton.Name = "StopTimeoutButton";
-            this.StopTimeoutButton.Size = new System.Drawing.Size(111, 23);
-            this.StopTimeoutButton.TabIndex = 12;
-            this.StopTimeoutButton.Text = "Stop Timeout";
-            this.StopTimeoutButton.UseVisualStyleBackColor = true;
-            this.StopTimeoutButton.Click += new System.EventHandler(this.StopTimeoutButton_Click);
-            // 
-            // TimeoutBox
-            // 
-            this.TimeoutBox.Controls.Add(this.StartTimeoutButton);
-            this.TimeoutBox.Controls.Add(this.StopTimeoutButton);
-            this.TimeoutBox.Controls.Add(this.TimeoutNum);
-            this.TimeoutBox.Location = new System.Drawing.Point(21, 189);
-            this.TimeoutBox.Name = "TimeoutBox";
-            this.TimeoutBox.Size = new System.Drawing.Size(200, 68);
-            this.TimeoutBox.TabIndex = 13;
-            this.TimeoutBox.TabStop = false;
-            this.TimeoutBox.Text = "Timeout";
+            this.MoveWindowRight_Button.BackColor = System.Drawing.Color.Transparent;
+            this.MoveWindowRight_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoveWindowRight_Button.ForeColor = System.Drawing.Color.Black;
+            this.MoveWindowRight_Button.Location = new System.Drawing.Point(116, 49);
+            this.MoveWindowRight_Button.Name = "MoveWindowRight_Button";
+            this.MoveWindowRight_Button.Size = new System.Drawing.Size(28, 55);
+            this.MoveWindowRight_Button.TabIndex = 3;
+            this.MoveWindowRight_Button.Text = ">";
+            this.MoveWindowRight_Button.UseVisualStyleBackColor = false;
+            this.MoveWindowRight_Button.Click += new System.EventHandler(this.MoveWindowRight_Button_Click);
             // 
             // MatchManagement
             // 
@@ -1187,6 +1230,7 @@
             this.VisitorGroupBox.ResumeLayout(false);
             this.VisitorGroupBox.PerformLayout();
             this.TimerGroupBox.ResumeLayout(false);
+            this.TimeoutBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TimeoutNum)).EndInit();
             this.LocalGroupBox.ResumeLayout(false);
             this.LocalGroupBox.PerformLayout();
@@ -1203,7 +1247,6 @@
             this.PlayersGroupBox.ResumeLayout(false);
             this.PlayersGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerNumNumBox)).EndInit();
-            this.TimeoutBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1299,5 +1342,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox TimeoutBox;
         private System.Windows.Forms.Button StopTimeoutButton;
+        private System.Windows.Forms.CheckBox SH_LocalSB_Button;
+        private System.Windows.Forms.Button MoveWindowLeft_Button;
+        private System.Windows.Forms.Button MoveWindowRight_Button;
     }
 }

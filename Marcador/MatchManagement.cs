@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Point = System.Drawing.Point;
 
 namespace Marcador
 {
@@ -21,7 +22,7 @@ namespace Marcador
         #region Variables
 
         private Marcador marcador;
-        private bool marcadorShowed = false;
+        private LocalSB_Window LocalSB_window;
         private Stopwatch swTimeout = new Stopwatch();
         private System.Windows.Forms.Timer tTimeout = new System.Windows.Forms.Timer();
         private Stopwatch swClock = new Stopwatch();
@@ -49,6 +50,7 @@ namespace Marcador
             InitializeComponent();
 
             marcador = new Marcador();
+            LocalSB_window = new LocalSB_Window();
 
             this.HalfComboBox.SelectedIndex = 0;
             this.LocalExpulsionComboBox.SelectedIndex = 0;
@@ -479,6 +481,96 @@ namespace Marcador
 
         #region OtherButtonClicks
 
+        private void MoveWindowLeft_Button_Click(object sender, EventArgs e)
+        {
+            if (!LocalSB_window.Visible)
+            {
+                return;
+            }
+
+            Screen[] screens = Screen.AllScreens;
+            int numScreens = screens.Length;
+            Point current_scoreboard_location = LocalSB_window.Location;
+            //Find current scoreboard window location
+            int current_screen_indx = -1;
+            for (int screen_indx = 0; screen_indx < screens.Length; screen_indx++)
+            {
+                Screen s = screens[screen_indx];
+                if (s.Bounds.Contains(current_scoreboard_location))
+                {
+                    current_screen_indx = screen_indx;
+                    break;
+                }
+            }
+            //Change screen
+            if (screens.Length > 0)
+            {
+                if (current_screen_indx == 0)
+                {
+                    Screen s = screens[screens.Length - 1];
+                    //Go around to the last screen
+                    LocalSB_window.WindowState = FormWindowState.Normal;
+                    LocalSB_window.Location = s.WorkingArea.Location;
+                    LocalSB_window.WindowState = FormWindowState.Maximized;
+
+                }
+                else
+                {
+                    Screen s = screens[current_screen_indx - 1];
+                    //Go around to the previous screen
+                    LocalSB_window.WindowState = FormWindowState.Normal;
+                    LocalSB_window.Location = s.WorkingArea.Location;
+                    LocalSB_window.WindowState = FormWindowState.Maximized;
+                }
+            }
+        }
+
+        private void MoveWindowRight_Button_Click(object sender, EventArgs e)
+        {
+
+            if (!LocalSB_window.Visible)
+            {
+                return;
+            }
+
+            Screen[] screens = Screen.AllScreens;
+            int numScreens = screens.Length;
+            Point current_scoreboard_location = LocalSB_window.Location;
+            //Find current scoreboard window location
+            int current_screen_indx = -1;
+            for (int screen_indx = 0; screen_indx < screens.Length; screen_indx++)
+            {
+                Screen s = screens[screen_indx];
+                if (s.Bounds.Contains(current_scoreboard_location))
+                {
+                    current_screen_indx = screen_indx;
+                    break;
+                }
+            }
+            //Change screen
+            if (screens.Length > 0)
+            {
+
+                if (current_screen_indx == (screens.Length - 1))
+                {
+                    Screen s = screens[0];
+                    //Go around to the first screen
+                    LocalSB_window.WindowState = FormWindowState.Normal;
+                    LocalSB_window.Location = s.WorkingArea.Location;
+                    LocalSB_window.WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    Screen s = screens[current_screen_indx + 1];
+                    //Go around to the next screen
+                    LocalSB_window.WindowState = FormWindowState.Normal;
+                    LocalSB_window.Location = s.WorkingArea.Location;
+                    LocalSB_window.WindowState = FormWindowState.Maximized;
+                }
+            }
+
+        }
+
         #endregion
 
         #region UIEvents
@@ -493,17 +585,27 @@ namespace Marcador
 
         private void SHScoreButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (!marcadorShowed)
+            if (!marcador.Visible)
             {
                 marcador.Show();
-                marcadorShowed = true;
             }
             else
             {
                 marcador.Hide();
-                marcadorShowed = false;
             }
+        }
 
+
+        private void SH_LocalSB_Button_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!LocalSB_window.Visible)
+            {
+                LocalSB_window.Show();
+            }
+            else
+            {
+                LocalSB_window.Hide();
+            }
 
         }
 
@@ -851,9 +953,10 @@ namespace Marcador
 
 
 
+
         #endregion
 
-       
+
     }
 
 }

@@ -54,6 +54,12 @@
       <DependentUpon>AddGoal.cs</DependentUpon>
     </Compile>
     <Compile Include="Exceptions.cs" />
+    <Compile Include="LocalSB_Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalSB_Window.Designer.cs">
+      <DependentUpon>LocalSB_Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="Marcador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddGoal.resx">
       <DependentUpon>AddGoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalSB_Window.resx">
+      <DependentUpon>LocalSB_Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Marcador.resx">
       <DependentUpon>Marcador.cs</DependentUpon>
