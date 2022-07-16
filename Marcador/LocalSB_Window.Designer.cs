@@ -165,11 +165,11 @@ namespace Marcador
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label LocalScore_Label;
-        private System.Windows.Forms.Label VisitorScore_Label;
-        private System.Windows.Forms.Label Time_Label;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label VisitorName_Label;
-        private System.Windows.Forms.Label LocalName_Label;
+        public System.Windows.Forms.Label LocalScore_Label;
+        public System.Windows.Forms.Label VisitorScore_Label;
+        public System.Windows.Forms.Label Time_Label;
+        public System.Windows.Forms.Label VisitorName_Label;
+        public System.Windows.Forms.Label LocalName_Label;
     }
 }

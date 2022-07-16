@@ -248,6 +248,7 @@ namespace Marcador
             {
                 marcador.CronoLabel.Text = time_str;
                 this.CronoLabel.Text = time_str;
+                LocalSB_window.Time_Label.Text = time_str;
             }
 
         }
@@ -296,6 +297,7 @@ namespace Marcador
             LocalScore++;
             this.LocalScoreLabel.Text = LocalScore.ToString();
             marcador.ScoreLabel.Text = LocalScore.ToString() + " - " + VisitorScore.ToString();
+            LocalSB_window.LocalScore_Label.Text = this.LocalScoreLabel.Text;
         }
 
         private void LocalLessButton_Click(object sender, EventArgs e)
@@ -305,6 +307,7 @@ namespace Marcador
                 LocalScore--;
                 this.LocalScoreLabel.Text = LocalScore.ToString();
                 marcador.ScoreLabel.Text = LocalScore.ToString() + " - " + VisitorScore.ToString();
+                LocalSB_window.LocalScore_Label.Text = this.LocalScoreLabel.Text;
             }
 
         }
@@ -314,6 +317,7 @@ namespace Marcador
             VisitorScore++;
             this.VisitorScoreLabel.Text = VisitorScore.ToString();
             marcador.ScoreLabel.Text = LocalScore.ToString() + " - " + VisitorScore.ToString();
+            LocalSB_window.VisitorScore_Label.Text = this.VisitorScoreLabel.Text;
         }
 
         private void VisitorLessButton_Click(object sender, EventArgs e)
@@ -323,6 +327,8 @@ namespace Marcador
                 VisitorScore--;
                 this.VisitorScoreLabel.Text = VisitorScore.ToString();
                 marcador.ScoreLabel.Text = LocalScore.ToString() + " - " + VisitorScore.ToString();
+                LocalSB_window.VisitorScore_Label.Text = this.VisitorScoreLabel.Text;
+
             }
         }
 
@@ -629,11 +635,15 @@ namespace Marcador
         private void LocalNameTextBox_TextChanged(object sender, EventArgs e)
         {
             marcador.Team1Label.Text = this.LocalNameTextBox.Text.ToUpper();
+            LocalSB_window.LocalName_Label.Text = this.LocalNameTextBox.Text.ToUpper();
+
         }
 
         private void VisitorNameTextBox_TextChanged(object sender, EventArgs e)
         {
             marcador.Team2Label.Text = this.VisitorNameTextBox.Text.ToUpper();
+            LocalSB_window.VisitorName_Label.Text = this.VisitorNameTextBox.Text.ToUpper();
+
         }
 
         private void LocalNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
